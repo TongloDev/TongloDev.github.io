@@ -17,6 +17,23 @@
     <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init('user_5cU3WDHd45W1F2G7VWXFw');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate the contact number value
+                this.contact_number.value = Math.random() * 100000 | 0;
+                emailjs.sendForm('gmail', 'intro_email', this);
+            });
+        }
+    </script>
   </head>
 
   <body>
@@ -192,9 +209,10 @@
               class="row contact_form"
               action="contact_process.php"
               method="post"
-              id="contactForm"
+              id="contact-form"
               novalidate="novalidate"
             >
+              <input type="hidden" name="contact_number">
               <div class="col-md-6">
                 <div class="form-group">
                   <input
@@ -225,7 +243,7 @@
                     type="text"
                     class="form-control"
                     id="subject"
-                    name="subject"
+                    name="phone-number"
                     placeholder="Phone Number"
                     onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Phone Number'"
@@ -248,7 +266,7 @@
                 </div>
               </div>
               <div class="col-md-12 text-right">
-                <button type="submit" value="submit" class="btn primary-btn">
+                <button type="submit" value="Send" class="btn primary-btn">
                   Send Message
                 </button>
               </div>

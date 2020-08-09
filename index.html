@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init('user_5cU3WDHd45W1F2G7VWXFw');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate the contact number value
+                this.contact_number.value = Math.random() * 100000 | 0;
+                emailjs.sendForm('gmail', 'intro_email', this);
+            });
+        }
+    </script>
   </head>
 
   <body>
@@ -407,10 +423,11 @@
               <p>Follow Your Curiosities</p>
               <form
                 class="form_area"
-                id="myForm"
+                id="contact-form"
                 action="mail.html"
                 method="post"
               >
+                <input type="hidden" name="contact_number">
                 <div class="row">
                   <div class="col-lg-12 form_group">
                     <input
@@ -420,7 +437,7 @@
                       type="text"
                     />
                     <input
-                      name="name"
+                      name="phone-number"
                       placeholder="Your Phone Number"
                       required=""
                       type="tel"
