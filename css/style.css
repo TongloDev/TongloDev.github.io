@@ -450,6 +450,12 @@ button:focus {
 /*----------------------------------------------------*/
 /* Start About Area css
 ============================================================================================ */
+
+.about_video {
+  text-align: center;
+  margin-top: 75px;
+}
+
 .h_blog_item .col-lg-6 {
   vertical-align: middle;
   align-self: center; }
