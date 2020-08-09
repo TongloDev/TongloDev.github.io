@@ -30,6 +30,7 @@
                 // generate the contact number value
                 this.contact_number.value = Math.random() * 100000 | 0;
                 emailjs.sendForm('gmail', 'intro_email', this);
+                alert("Message sent.");
             });
         }
     </script>
